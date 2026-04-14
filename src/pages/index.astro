@@ -1,0 +1,87 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const posts = (await getCollection('blog'))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="intro">
+				<p class="eyebrow">Index</p>
+				<h2>UNDER CONSTRUCTION.</h2>
+				<p>
+					Nothing to see here.
+				</p>
+				<p>
+					This site now follows a simple archive-first blog layout: compact navigation, a narrow reading
+					column, and posts treated as the primary artifact. The styling leans into a dark editor feel,
+					with gruvbox-style contrast and softer pastel accents.
+				</p>
+				<p>
+					If you just arrived, start with the latest entries below or go straight to the
+					<a href="/blog">full archive</a>.
+				</p>
+			</section>
+
+			<section aria-labelledby="latest-posts">
+				<p class="eyebrow">Recent</p>
+				<h2 id="latest-posts">Latest posts</h2>
+				<ul class="post-list">
+					{
+						posts.map((post) => (
+							<li>
+								<a href={`/blog/${post.id}/`}>
+									<span class="post-title">{post.data.title}</span>
+								</a>
+								<p class="meta-line">{post.data.pubDate.toLocaleDateString('en-US', {
+									year: 'numeric',
+									month: 'short',
+									day: 'numeric',
+								})}</p>
+								<p>{post.data.description}</p>
+							</li>
+						))
+					}
+				</ul>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+<style>
+	.intro {
+		margin-bottom: 3rem;
+	}
+	.post-list {
+		list-style: none;
+		padding: 0;
+	}
+	.post-list li {
+		padding: 1.1rem 0 1.2rem;
+		border-top: 1px solid var(--border);
+	}
+	.post-list li:last-child {
+		border-bottom: 1px solid var(--border);
+	}
+	.post-title {
+		color: var(--heading);
+		font-family:
+			"SFMono-Regular", SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono",
+			"Courier New", monospace;
+		font-size: 1.1rem;
+	}
+	.post-list p:last-child {
+		margin-bottom: 0;
+	}
+</style>

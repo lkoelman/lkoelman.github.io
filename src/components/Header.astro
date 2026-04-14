@@ -1,0 +1,59 @@
+---
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import HeaderLink from './HeaderLink.astro';
+---
+
+<header>
+	<div class="shell">
+		<p class="eyebrow">~/blog</p>
+		<h1><a href="/">{SITE_TITLE}</a></h1>
+		<p class="tagline">{SITE_DESCRIPTION}</p>
+		<nav aria-label="Primary">
+			<HeaderLink href="/">home</HeaderLink>
+			<HeaderLink href="/blog">blog</HeaderLink>
+			<HeaderLink href="/about">about</HeaderLink>
+		</nav>
+		<hr />
+	</div>
+</header>
+<style>
+	header {
+		padding: 3rem 1.25rem 0;
+	}
+	.shell {
+		width: min(100%, 46rem);
+		margin: 0 auto;
+	}
+	h1 {
+		margin-bottom: 0.4rem;
+		font-size: clamp(2.8rem, 8vw, 4.8rem);
+	}
+	h1 a,
+	h1 a:hover {
+		color: var(--heading);
+		text-decoration: none;
+	}
+	.tagline {
+		max-width: 34rem;
+		margin-bottom: 1.2rem;
+		color: var(--text-muted);
+	}
+	nav {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.8rem 1.1rem;
+		font-size: 0.95rem;
+	}
+	nav a {
+		color: var(--text-muted);
+		text-transform: lowercase;
+	}
+	nav a.active {
+		color: var(--heading);
+	}
+	@media (max-width: 720px) {
+		header {
+			padding-top: 2rem;
+		}
+	}
+</style>

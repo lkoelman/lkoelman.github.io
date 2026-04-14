@@ -1,0 +1,233 @@
+:root {
+	--bg: #1d2021;
+	--bg-elevated: #282828;
+	--bg-soft: #32302f;
+	--border: #504945;
+	--text: #ebdbb2;
+	--text-muted: #bdae93;
+	--heading: #fbf1c7;
+	--link: #83a598;
+	--link-hover: #8ec07c;
+	--accent: #d3869b;
+	--accent-strong: #fe8019;
+	--date: #fabd2f;
+	--quote: #b8bb26;
+	--code: #d5c4a1;
+	--selection-bg: rgba(131, 165, 152, 0.28);
+	--shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family:
+		var(--font-atkinson), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+		sans-serif;
+	margin: 0;
+	min-height: 100vh;
+	background:
+		radial-gradient(circle at top, rgba(80, 73, 69, 0.35), transparent 34%),
+		linear-gradient(180deg, #282828 0%, var(--bg) 18rem, #17191a 100%);
+	color: var(--text);
+	font-size: 19px;
+	line-height: 1.75;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+}
+
+main {
+	width: min(100%, 46rem);
+	margin: 0 auto;
+	padding: 0 1.25rem 4rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+nav,
+.eyebrow,
+.meta-line,
+blockquote cite,
+th {
+	font-family:
+		"SFMono-Regular", SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono",
+		"Courier New", monospace;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0 0 0.75rem;
+	color: var(--heading);
+	line-height: 1.15;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+}
+
+h1 {
+	font-size: clamp(2.5rem, 6vw, 4rem);
+}
+
+h2 {
+	font-size: clamp(1.6rem, 4vw, 2.2rem);
+	margin-top: 2.5rem;
+}
+
+h3 {
+	font-size: clamp(1.2rem, 3vw, 1.5rem);
+	margin-top: 2rem;
+}
+
+p,
+ul,
+ol,
+blockquote,
+table,
+pre {
+	margin: 0 0 1.35rem;
+}
+
+a {
+	color: var(--link);
+	text-decoration-thickness: 0.08em;
+	text-underline-offset: 0.18em;
+	transition:
+		color 160ms ease,
+		text-decoration-color 160ms ease,
+		background-color 160ms ease;
+}
+
+a:hover,
+a:focus-visible {
+	color: var(--link-hover);
+}
+
+strong,
+b {
+	color: var(--heading);
+	font-weight: 700;
+}
+
+hr {
+	border: 0;
+	border-top: 1px solid var(--border);
+	margin: 2rem 0;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 10px;
+}
+
+code,
+pre,
+kbd {
+	font-family:
+		"SFMono-Regular", SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono",
+		"Courier New", monospace;
+}
+
+code {
+	padding: 0.15rem 0.4rem;
+	border: 1px solid rgba(168, 153, 132, 0.15);
+	border-radius: 0.35rem;
+	background: rgba(60, 56, 54, 0.72);
+	color: var(--code);
+	font-size: 0.9em;
+}
+
+pre {
+	overflow-x: auto;
+	padding: 1rem 1.1rem;
+	border: 1px solid var(--border);
+	border-radius: 0.85rem;
+	background: rgba(40, 40, 40, 0.92);
+	box-shadow: inset 0 1px 0 rgba(251, 241, 199, 0.04);
+}
+
+pre code {
+	padding: 0;
+	border: 0;
+	background: transparent;
+}
+
+blockquote {
+	padding-left: 1rem;
+	border-left: 3px solid var(--quote);
+	color: var(--text-muted);
+}
+
+blockquote cite {
+	color: var(--heading);
+	font-style: normal;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.95rem;
+}
+
+th,
+td {
+	padding: 0.7rem 0.8rem;
+	border-bottom: 1px solid var(--border);
+	text-align: left;
+}
+
+textarea,
+input {
+	font: inherit;
+}
+
+::selection {
+	background: var(--selection-bg);
+}
+
+.eyebrow {
+	display: inline-block;
+	margin-bottom: 0.9rem;
+	color: var(--accent);
+	font-size: 0.78rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.meta-line {
+	color: var(--text-muted);
+	font-size: 0.86rem;
+}
+
+.sr-only {
+	border: 0;
+	padding: 0;
+	margin: 0;
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	clip: rect(1px 1px 1px 1px);
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+	body {
+		font-size: 17px;
+	}
+
+	main {
+		padding-inline: 1rem;
+	}
+}
